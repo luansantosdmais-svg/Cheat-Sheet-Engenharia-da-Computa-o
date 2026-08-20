@@ -217,5 +217,5 @@ Distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais
 ---
 
 <p align="center">
-  Feito com 💙 para <b>Engenharia da Computação</b>.
+  Feito com 💙 no 8° semestre de <b>Engenharia da Computação</b>.
 </p>
