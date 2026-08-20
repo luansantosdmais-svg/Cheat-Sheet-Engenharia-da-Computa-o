@@ -140,30 +140,8 @@ def build_notebook(subj: dict) -> nbf.NotebookNode:
         f"{about}\n"
     ))
 
-    # 2) conteudo teorico (cards)
-    cells.append(nbf.v4.new_markdown_cell(
-        "## 📚 Conteúdo da matéria\n\n"
-        "Resumo teórico organizado em cards (o mesmo que é renderizado no PDF gerado abaixo).\n\n"
-        + conteudo_md
-    ))
-
-    # 3) codigo: gerador
-    cells.append(nbf.v4.new_markdown_cell(
-        "## ⚙️ Gerador do Cheat Sheet (PDF)\n\n"
-        "O script original gera um **PDF estilo OneNote** com `reportlab`. "
-        "Para rodar em qualquer sistema operacional, as fontes são resolvidas automaticamente "
-        "(usa a **DejaVu embarcada no matplotlib** com fallback para os caminhos clássicos "
-        "de Windows/Linux/macOS) e o arquivo de saída é gerado na pasta atual.\n"
-    ))
-    cells.append(nbf.v4.new_code_cell(HELPER + "\n\n# ===== código original adaptado =====\n" + transformed))
-
-    # 4) exibicao do PDF gerado
-    cells.append(nbf.v4.new_markdown_cell(
-        "## 🖼️ Resultado visual\n\n"
-        "As páginas do PDF gerado são renderizadas abaixo (código de pré-visualização). "
-        "Este é o **cheat sheet** da matéria.\n"
-    ))
-    cells.append(nbf.v4.new_code_cell(
+    # 2) resultado visual no topo (gerador + renderização em uma única célula)
+    display_code = (
         "import pymupdf as fitz\n"
         "from IPython.display import display, Image\n\n"
         f"doc = fitz.open(Path('{pdf_name}'))\n"
@@ -171,6 +149,22 @@ def build_notebook(subj: dict) -> nbf.NotebookNode:
         "for i, page in enumerate(doc, 1):\n"
         "    pix = page.get_pixmap(dpi=130)\n"
         "    display(Image(data=pix.tobytes('png')))\n"
+    )
+    cells.append(nbf.v4.new_markdown_cell(
+        "## 🖼️ Resultado visual\n\n"
+        "Este é o **cheat sheet** da matéria, gerado pelo código abaixo (a mesma lógica é "
+        "reutilizada na célula de geração do PDF). As páginas são renderizadas automaticamente.\n"
+    ))
+    cells.append(nbf.v4.new_code_cell(
+        HELPER + "\n\n# ===== código original adaptado =====\n" + transformed +
+        "\n\n# ===== renderização do PDF gerado =====\n" + display_code
+    ))
+
+    # 3) conteudo teorico (cards)
+    cells.append(nbf.v4.new_markdown_cell(
+        "## 📚 Conteúdo da matéria\n\n"
+        "Resumo teórico organizado em cards (o mesmo que é renderizado no PDF acima).\n\n"
+        + conteudo_md
     ))
 
     # 5) exemplos praticos
