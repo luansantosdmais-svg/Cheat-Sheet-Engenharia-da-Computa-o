@@ -1,0 +1,28 @@
+# Ambiente Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*_executed_checkpoint.ipynb
+
+# IDEs / editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Segredos / logs
+.env
+*.log
+
+# Arquivos temporários de build
+tools/__pycache__/

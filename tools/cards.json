@@ -1,0 +1,1683 @@
+{
+ "Algoritmos_Estrutura_Dados": [
+  {
+   "title": "ESTRUTURAS LINEARES",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "lineares",
+   "idea": "Organizar dados em sequência para acesso, inserção, remoção e processamento.",
+   "formulas": [
+    "<b>Array:</b> acesso por índice; tamanho lógico previsível",
+    "<b>Lista ligada:</b> nós + ponteiros; inserção/remoção local eficiente",
+    "<b>Pilha:</b> LIFO → push, pop, top",
+    "<b>Fila:</b> FIFO → enqueue, dequeue, front",
+    "<b>Deque:</b> inserção/remoção nas duas extremidades",
+    "<b>Array:</b> busca O(1) por índice; inserção interna custa deslocamento",
+    "<b>Lista:</b> acesso sequencial O(n); não desloca elementos",
+    "<b>Escolha:</b> depende de acesso aleatório vs inserções frequentes"
+   ],
+   "tip": "Se precisa acessar por posição rapidamente, prefira array. Se vai inserir/remover muito no meio, pense em lista ligada."
+  },
+  {
+   "title": "BUSCA, ORDENAÇÃO<br/>&amp; COMPLEXIDADE",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "complexidade",
+   "idea": "Comparar algoritmos pelo custo de tempo e memória para escolher a melhor solução.",
+   "formulas": [
+    "<b>Big-O:</b> limite superior assintótico do crescimento",
+    "<b>Busca linear:</b> O(n)",
+    "<b>Busca binária:</b> O(log n), exige vetor ordenado",
+    "<b>Bubble/Selection/Insertion:</b> O(n²)",
+    "<b>Merge sort:</b> O(n log n), estável",
+    "<b>Quick sort:</b> médio O(n log n), pior O(n²)",
+    "<b>Espaço:</b> analisar memória além do tempo",
+    "<b>Trade-off:</b> melhor caso, pior caso e caso médio importam"
+   ],
+   "tip": "Antes de otimizar código, identifique o gargalo. Trocar O(n²) por O(n log n) costuma valer mais que micro-otimizações."
+  },
+  {
+   "title": "RECURSÃO, ÁRVORES<br/>&amp; GRAFOS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "arvores",
+   "idea": "Modelar hierarquias e conexões, explorando problemas por divisão em subproblemas.",
+   "formulas": [
+    "<b>Recursão:</b> caso base + chamada recursiva menor",
+    "<b>Pilha de execução:</b> cada chamada guarda estado",
+    "<b>Árvore:</b> raiz, nós, folhas, altura e subárvores",
+    "<b>Percursos:</b> pré-ordem, em-ordem, pós-ordem, largura",
+    "<b>BST:</b> esquerda &lt; raiz &lt; direita",
+    "<b>Grafo:</b> Vértices + arestas; pode ser dirigido ou não",
+    "<b>Busca:</b> DFS usa profundidade; BFS usa fila e níveis",
+    "<b>Aplicações:</b> arquivos, redes, caminhos e dependências"
+   ],
+   "tip": "Toda recursão precisa de caso base claro. Para percorrer níveis, BFS costuma ser a escolha natural; para profundidade, DFS."
+  },
+  {
+   "title": "HASH, HEAPS<br/>&amp; BOAS PRÁTICAS",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "hash",
+   "idea": "Acelerar consultas e organizar prioridades usando estruturas adequadas ao problema.",
+   "formulas": [
+    "<b>Tabela hash:</b> chave → índice por função hash",
+    "<b>Colisão:</b> pode usar encadeamento ou endereçamento aberto",
+    "<b>Custo médio:</b> busca/inserção/rem. ≈ O(1)",
+    "<b>Heap:</b> árvore quase completa com propriedade de prioridade",
+    "<b>Max-heap:</b> pai ≥ filhos; <b>min-heap:</b> pai ≤ filhos",
+    "<b>Fila de prioridade:</b> inserção e remoção O(log n)",
+    "<b>ADT:</b> separar interface da implementação",
+    "<b>Boas práticas:</b> modularizar, testar e documentar invariantes"
+   ],
+   "tip": "Estrutura boa depende da operação dominante: consulta rápida pede hash; retirar maior/menor repetidamente pede heap."
+  }
+ ],
+ "Algoritmos_Estrutura_Dados_Avancado": [
+  {
+   "title": "ÁRVORES BALANCEADAS<br/>&amp; MULTIVIAS",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "arvores",
+   "idea": "Manter operações eficientes controlando a altura e a organização das chaves na árvore.",
+   "formulas": [
+    "<b>AVL:</b> |altura(esq) − altura(dir)| ≤ 1",
+    "<b>Rotações:</b> simples ou duplas restauram o balanceamento",
+    "<b>Busca/ins./remoção:</b> O(log n) em árvore balanceada",
+    "<b>Red-Black:</b> balanceamento aproximado com regras de cores",
+    "<b>B-Tree:</b> vários filhos/chaves por nó; ideal para disco",
+    "<b>B+ Tree:</b> dados nas folhas; folhas encadeadas",
+    "<b>Trie:</b> busca por prefixos em O(m), m = tamanho da chave",
+    "<b>Uso:</b> índices, sistemas de arquivos e bancos de dados"
+   ],
+   "tip": "Em estruturas balanceadas, o ganho vem de manter a altura próxima de log n. Uma BST comum pode degradar para O(n)."
+  },
+  {
+   "title": "GRAFOS &amp;<br/>ALGORITMOS CLÁSSICOS",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "grafos",
+   "idea": "Resolver conectividade, caminhos mínimos e árvores geradoras em redes e relações complexas.",
+   "formulas": [
+    "<b>Representação:</b> lista de adjacência ou matriz",
+    "<b>BFS:</b> O(V+E); menor caminho em grafo não ponderado",
+    "<b>DFS:</b> O(V+E); ciclos, componentes e ordenação topológica",
+    "<b>Dijkstra:</b> caminhos mínimos com pesos não negativos",
+    "<b>Bellman-Ford:</b> aceita pesos negativos e detecta ciclos negativos",
+    "<b>Floyd-Warshall:</b> todos os pares em O(V³)",
+    "<b>Prim/Kruskal:</b> árvore geradora mínima (MST)",
+    "<b>Topológica:</b> ordena DAG respeitando dependências"
+   ],
+   "tip": "Antes de escolher o algoritmo, observe se há pesos negativos, se o grafo é direcionado e se você precisa de um caminho ou de todos."
+  },
+  {
+   "title": "HASHING &amp;<br/>ESTRUTURAS ESPECIAIS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "hash",
+   "idea": "Usar estruturas especializadas para consultas rápidas, conjuntos dinâmicos e processamento de intervalos.",
+   "formulas": [
+    "<b>Hashing:</b> custo médio O(1) para busca/inserção",
+    "<b>Fator de carga:</b> α = n/m; controla colisões",
+    "<b>Rehash:</b> aumenta tabela quando α fica alto",
+    "<b>Union-Find:</b> conjuntos disjuntos com find/union",
+    "<b>Path compression:</b> encurta caminhos no find",
+    "<b>Union by rank/size:</b> evita árvores altas",
+    "<b>Segment Tree:</b> consultas/atualizações em intervalos O(log n)",
+    "<b>Fenwick Tree:</b> somas prefixadas com O(log n) e pouca memória"
+   ],
+   "tip": "Escolha pela operação dominante: hash para chave→valor, Union-Find para conectividade dinâmica e Segment/Fenwick para intervalos."
+  },
+  {
+   "title": "DP, GREEDY &amp;<br/>BACKTRACKING",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "estrategias",
+   "idea": "Escolher estratégias algorítmicas para reduzir recomputação e explorar espaços de busca com eficiência.",
+   "formulas": [
+    "<b>DP:</b> subproblemas sobrepostos + subestrutura ótima",
+    "<b>Memoization:</b> top-down com cache",
+    "<b>Tabulation:</b> bottom-up preenchendo tabela",
+    "<b>Greedy:</b> escolhe melhor decisão local a cada passo",
+    "<b>Backtracking:</b> tenta, valida e desfaz quando necessário",
+    "<b>Branch &amp; Bound:</b> poda ramos usando limites",
+    "<b>Amortizada:</b> custo médio de uma sequência de operações",
+    "<b>Trade-off:</b> tempo × memória × simplicidade da solução"
+   ],
+   "tip": "DP não é “usar tabela” por si só. Primeiro identifique estados, transições, caso base e ordem correta de cálculo."
+  }
+ ],
+ "Algoritmos_Logica_Programacao": [
+  {
+   "title": "LÓGICA, VARIÁVEIS<br/>&amp; OPERADORES",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "logica",
+   "idea": "Transformar um problema em passos claros usando dados, expressões e operadores.",
+   "formulas": [
+    "<b>Algoritmo:</b> sequência finita e ordenada de passos",
+    "<b>Variável:</b> nome que referencia um valor na memória",
+    "<b>Tipos:</b> inteiro, real, lógico, caractere e texto",
+    "<b>Atribuição:</b> x ← expressão",
+    "<b>Aritméticos:</b> +, −, ×, ÷, mod",
+    "<b>Relacionais:</b> =, ≠, &lt;, &gt;, ≤, ≥",
+    "<b>Lógicos:</b> NÃO, E, OU",
+    "<b>Prioridade:</b> parênteses → aritméticos → relacionais → lógicos"
+   ],
+   "tip": "Antes de programar, escreva entradas, processamento e saídas. Um algoritmo claro costuma virar código claro."
+  },
+  {
+   "title": "DECISÕES &amp;<br/>ESTRUTURAS DE CONTROLE",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "decisao",
+   "idea": "Escolher caminhos diferentes conforme condições verdadeiras ou falsas.",
+   "formulas": [
+    "<b>SE:</b> executa um bloco quando a condição é verdadeira",
+    "<b>SE/SENÃO:</b> escolhe entre dois caminhos",
+    "<b>Encadeado:</b> use quando há várias faixas ou condições",
+    "<b>ESCOLHA/CASO:</b> útil para valores discretos de uma variável",
+    "<b>Condição composta:</b> combine testes com E / OU",
+    "<b>Curto-circuito:</b> a avaliação pode parar quando o resultado já é conhecido",
+    "<b>Validação:</b> trate entradas inválidas explicitamente",
+    "<b>Boa prática:</b> evite níveis excessivos de aninhamento"
+   ],
+   "tip": "Teste mentalmente os casos de fronteira: igual, menor, maior, zero, vazio e valores extremos. É onde muitos erros aparecem."
+  },
+  {
+   "title": "REPETIÇÃO &amp;<br/>RASTREAMENTO",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "laco",
+   "idea": "Repetir instruções de forma controlada e acompanhar a evolução das variáveis.",
+   "formulas": [
+    "<b>PARA:</b> ideal quando o número de repetições é conhecido",
+    "<b>ENQUANTO:</b> testa a condição antes de executar",
+    "<b>REPITA:</b> executa ao menos uma vez e testa no final",
+    "<b>Contador:</b> i ← i + 1",
+    "<b>Acumulador:</b> soma ← soma + valor",
+    "<b>Sentinela:</b> valor especial encerra a leitura",
+    "<b>Loop infinito:</b> condição nunca se torna falsa",
+    "<b>Rastreamento:</b> monte tabela com iteração, variáveis e saída"
+   ],
+   "tip": "Em todo laço, identifique três coisas: inicialização, condição de parada e atualização. Se uma faltar, suspeite de erro."
+  },
+  {
+   "title": "FUNÇÕES &amp;<br/>MODULARIZAÇÃO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "modular",
+   "idea": "Dividir problemas em partes menores, reutilizáveis e fáceis de testar.",
+   "formulas": [
+    "<b>Função:</b> recebe parâmetros e pode retornar um valor",
+    "<b>Procedimento:</b> executa uma tarefa sem retorno obrigatório",
+    "<b>Parâmetro:</b> dado enviado para a rotina",
+    "<b>Escopo:</b> define onde uma variável pode ser acessada",
+    "<b>Vetor:</b> coleção indexada de elementos do mesmo tipo",
+    "<b>Índice:</b> posição usada para acessar vetor[i]",
+    "<b>Matriz:</b> estrutura bidimensional linha × coluna",
+    "<b>Modularização:</b> reduz repetição e facilita manutenção/testes"
+   ],
+   "tip": "Dê a cada função uma responsabilidade principal. Funções pequenas e bem nomeadas são mais fáceis de entender, testar e reutilizar."
+  }
+ ],
+ "Arquitetura_Organizacao_Computadores": [
+  {
+   "title": "DADOS &amp;<br/>REPRESENTAÇÃO",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "dados",
+   "idea": "Codificar números, caracteres e instruções em padrões de bits.",
+   "formulas": [
+    "<b>Unidades:</b> 1 byte = 8 bits; 1 KiB = 2^10 B; 1 MiB = 2^20 B",
+    "<b>Base b:</b> N = Σ d_i · b^i",
+    "<b>Binário ↔ hexadecimal:</b> 1 dígito hex = 4 bits",
+    "<b>Sem sinal, n bits:</b> 0 a 2^n - 1",
+    "<b>Complemento de 2:</b> -2^(n-1) a 2^(n-1) - 1; negativo = inverter + 1",
+    "<b>Overflow com sinal:</b> operandos de mesmo sinal geram resultado de sinal oposto",
+    "<b>IEEE 754:</b> sinal + expoente + fração (mantissa)"
+   ],
+   "tip": "Antes de converter ou somar, fixe a largura em bits. Carry e overflow não significam a mesma coisa."
+  },
+  {
+   "title": "CPU, ISA &amp;<br/>CICLO DE INSTRUÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "cpu",
+   "idea": "A ISA define o que a máquina executa; a microarquitetura define como.",
+   "formulas": [
+    "<b>CPU:</b> controle + ULA + registradores",
+    "<b>PC/IR:</b> próxima instrução / instrução atual",
+    "<b>Ciclo:</b> busca → decodifica → executa → memória → escrita",
+    "<b>Instrução:</b> opcode + operandos; modos localizam os dados",
+    "<b>ISA:</b> instruções, registradores, formatos e endereçamento",
+    "<b>Pipeline:</b> sobrepõe etapas; hazards estruturais, de dados e de controle",
+    "<b>Tempo de CPU:</b> IC·CPI·T<sub>clk</sub> = IC·CPI/f"
+   ],
+   "tip": "ISA é a interface; microarquitetura é a implementação. CPUs diferentes podem usar a mesma ISA."
+  },
+  {
+   "title": "HIERARQUIA DE<br/>MEMÓRIA &amp; CACHE",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "memoria",
+   "idea": "Combinar velocidade, capacidade e custo explorando localidade.",
+   "formulas": [
+    "<b>Hierarquia:</b> registradores → cache → RAM → SSD/HDD",
+    "<b>Localidade temporal:</b> dado recente tende a ser reutilizado",
+    "<b>Localidade espacial:</b> endereços próximos tendem a ser acessados",
+    "<b>Cache:</b> transfere blocos/linhas; acesso gera hit ou miss",
+    "<b>Endereço:</b> tag | índice | deslocamento",
+    "<b>AMAT:</b> T<sub>hit</sub> + taxa de miss·penalidade de miss",
+    "<b>Mapeamento:</b> direto, associativo por conjunto ou totalmente associativo"
+   ],
+   "tip": "Separe tag, índice e deslocamento usando o tamanho da linha e o número de conjuntos."
+  },
+  {
+   "title": "E/S, BARRAMENTOS<br/>&amp; INTERRUPÇÕES",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "io",
+   "idea": "Conectar CPU, memória e periféricos sem ocupar o processador o tempo todo.",
+   "formulas": [
+    "<b>Barramentos:</b> dados, endereços e controle",
+    "<b>MMIO:</b> registradores do periférico ocupam endereços de memória",
+    "<b>Polling:</b> CPU consulta o estado; simples, mas gasta ciclos",
+    "<b>Interrupção:</b> salva contexto → ISR → retorno",
+    "<b>DMA:</b> move blocos E/S ↔ memória com pouca intervenção da CPU",
+    "<b>Desempenho:</b> latência = tempo/operação; banda = dados/tempo"
+   ],
+   "tip": "Use interrupções em eventos esporádicos e DMA em grandes blocos de dados."
+  }
+ ],
+ "Arquiteturas_Paralelas_Distribuidas": [
+  {
+   "title": "PARALELISMO &amp;<br/>ARQUITETURAS",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "paralelismo",
+   "idea": "Executar múltiplas operações ao mesmo tempo para aumentar desempenho e throughput.",
+   "formulas": [
+    "<b>Paralelismo:</b> tarefas simultâneas em múltiplos recursos",
+    "<b>Concorrência:</b> tarefas avançam de forma intercalada ou simultânea",
+    "<b>Flynn:</b> SISD, SIMD, MISD e MIMD",
+    "<b>SIMD:</b> mesma instrução em vários dados; comum em GPU",
+    "<b>MIMD:</b> processadores executam instruções distintas",
+    "<b>Speedup:</b> S = T<sub>serial</sub>/T<sub>paralelo</sub>",
+    "<b>Eficiência:</b> E = S/p, com p processadores",
+    "<b>Lei de Amdahl:</b> a parte serial limita o speedup máximo"
+   ],
+   "tip": "Mais núcleos não garantem ganho linear. Sempre identifique a parte serial e o custo de sincronização/comunicação."
+  },
+  {
+   "title": "MEMÓRIA COMPARTILHADA<br/>&amp; SINCRONIZAÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "memoria",
+   "idea": "Coordenar threads que acessam dados comuns sem produzir resultados inconsistentes.",
+   "formulas": [
+    "<b>Threads:</b> compartilham memória do processo",
+    "<b>Race condition:</b> resultado depende da ordem",
+    "<b>Seção crítica:</b> acessa recurso compartilhado",
+    "<b>Mutex:</b> exclusão mútua para um recurso",
+    "<b>Semáforo:</b> controle por contagem/sinal",
+    "<b>Barreira:</b> sincroniza fases das threads",
+    "<b>Coerência de cache:</b> mantém cópias consistentes",
+    "<b>False sharing:</b> disputa indevida de linha de cache"
+   ],
+   "tip": "Evite compartilhar estado quando não for necessário. Menos sincronização costuma significar menos bloqueio e melhor escalabilidade."
+  },
+  {
+   "title": "SISTEMAS DISTRIBUÍDOS<br/>&amp; COMUNICAÇÃO",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "distribuidos",
+   "idea": "Coordenar computadores independentes que cooperam por rede como um único sistema lógico.",
+   "formulas": [
+    "<b>Nó:</b> máquina/processo participante",
+    "<b>Mensagem:</b> comunicação entre nós",
+    "<b>Latência:</b> atraso da mensagem; <b>largura:</b> taxa de dados",
+    "<b>RPC:</b> chamada remota como chamada local",
+    "<b>Cliente-servidor:</b> solicita ↔ oferece serviço",
+    "<b>P2P:</b> nós atuam como cliente e servidor",
+    "<b>Relógios:</b> não há tempo global perfeito",
+    "<b>Falhas:</b> rede e nós falham independentemente"
+   ],
+   "tip": "Em sistemas distribuídos, a rede faz parte do problema: mensagens atrasam, podem falhar e não existe memória global compartilhada."
+  },
+  {
+   "title": "CONSISTÊNCIA, FALHAS<br/>&amp; ESCALABILIDADE",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "consistencia",
+   "idea": "Projetar serviços distribuídos que continuem corretos e disponíveis mesmo sob carga e falhas.",
+   "formulas": [
+    "<b>Replicação:</b> cópias para disponibilidade/leitura",
+    "<b>Particionamento:</b> divide dados/carga entre nós",
+    "<b>Consistência forte:</b> leitura vê valor recente",
+    "<b>Consistência eventual:</b> réplicas convergem",
+    "<b>CAP:</b> sob partição: consistência × disponibilidade",
+    "<b>Tolerância a falhas:</b> detectar, isolar, recuperar",
+    "<b>Balanceamento:</b> distribui requisições",
+    "<b>Escalabilidade:</b> crescer sem degradar demais"
+   ],
+   "tip": "Antes de escolher consistência forte ou eventual, pense no requisito do sistema: dinheiro e estoque pedem garantias diferentes de feed e cache."
+  }
+ ],
+ "Calculo_Diferencial_Integral_I": [
+  {
+   "title": "LIMITES &amp;<br/>CONTINUIDADE",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "limites",
+   "idea": "Entender para qual valor f(x) se aproxima quando x se aproxima de um ponto.",
+   "formulas": [
+    "<b>Notação:</b> lim f(x) = L, quando x → a",
+    "<b>Laterais:</b> lim x→a⁻ e lim x→a⁺ devem coincidir",
+    "<b>Substituição:</b> se der número real, esse costuma ser o limite",
+    "<b>Indeterminação 0/0:</b> fatorar, simplificar ou racionalizar",
+    "<b>Continuidade:</b> lim x→a f(x) = f(a)",
+    "<b>Limite notável:</b> lim sen(x)/x = 1, x→0",
+    "<b>Assíntota vertical:</b> limite tende a ±∞",
+    "<b>Teorema do valor intermediário:</b> continuidade garante valores entre f(a) e f(b)"
+   ],
+   "tip": "0/0 não é resposta. É uma indeterminação: transforme a expressão e tente novamente antes de concluir qualquer coisa."
+  },
+  {
+   "title": "DERIVADAS &amp;<br/>REGRAS",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "derivadas",
+   "idea": "Interpretar derivada como taxa de variação instantânea e inclinação da reta tangente.",
+   "formulas": [
+    "<b>Definição:</b> f'(x) = lim [f(x+h)-f(x)]/h, h→0",
+    "<b>Constante:</b> (c)' = 0",
+    "<b>Potência:</b> (x<super>n</super>)' = n·x<super>n-1</super>",
+    "<b>Produto:</b> (fg)' = f'g + fg'",
+    "<b>Quociente:</b> (f/g)' = (f'g - fg')/g²",
+    "<b>Cadeia:</b> [f(g(x))]' = f'(g(x))·g'(x)",
+    "<b>Trig.:</b> (sen x)'=cos x; (cos x)'=-sen x",
+    "<b>Exp./log:</b> (e<super>x</super>)'=e<super>x</super>; (ln x)'=1/x"
+   ],
+   "tip": "Na regra da cadeia, derive a função de fora e multiplique pela derivada da função de dentro. Não pule o fator interno."
+  },
+  {
+   "title": "APLICAÇÕES<br/>DE DERIVADAS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "aplicacoes",
+   "idea": "Usar f' e f'' para estudar crescimento, extremos, concavidade e otimização.",
+   "formulas": [
+    "<b>Ponto crítico:</b> f'(x)=0 ou f' não existe",
+    "<b>Crescente:</b> f'(x)&gt;0; <b>decrescente:</b> f'(x)&lt;0",
+    "<b>Máx./mín.:</b> observar mudança de sinal de f'",
+    "<b>2ª derivada:</b> f''&gt;0 côncava para cima; f''&lt;0 para baixo",
+    "<b>Inflexão:</b> f'' muda de sinal",
+    "<b>Otimização:</b> modelar função objetivo e resolver f'=0",
+    "<b>L’Hôpital:</b> usar somente em 0/0 ou ∞/∞",
+    "<b>TVM:</b> existe c com f'(c) = [f(b)-f(a)]/(b-a)"
+   ],
+   "tip": "Antes de aplicar L’Hôpital, confirme a indeterminação. Em otimização, defina a função objetivo e as restrições antes de derivar."
+  },
+  {
+   "title": "INTEGRAIS &amp;<br/>APLICAÇÕES",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "integrais",
+   "idea": "Interpretar integral como acumulação e área líquida, ligada à derivada pelo Teorema Fundamental.",
+   "formulas": [
+    "<b>Indefinida:</b> ∫f(x)dx = F(x) + C",
+    "<b>Potência:</b> ∫x<super>n</super>dx = x<super>n+1</super>/(n+1)+C, n≠-1",
+    "<b>Exponencial:</b> ∫e<super>x</super>dx = e<super>x</super> + C",
+    "<b>1/x:</b> ∫(1/x)dx = ln|x| + C",
+    "<b>TFC:</b> ∫<sub>a</sub><super>b</super> f(x)dx = F(b)-F(a)",
+    "<b>Substituição:</b> u=g(x), du=g'(x)dx",
+    "<b>Área entre curvas:</b> ∫ [f(x)-g(x)] dx",
+    "<b>Valor médio:</b> f<sub>m</sub> = (1/(b-a))∫<sub>a</sub><super>b</super>f(x)dx"
+   ],
+   "tip": "Na integral indefinida, não esqueça +C. Em área entre curvas, determine primeiro qual função fica acima no intervalo."
+  }
+ ],
+ "Calculo_II": [
+  {
+   "title": "TÉCNICAS DE<br/>INTEGRAÇÃO",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "tecnicas",
+   "idea": "Escolher a transformação que torna a integral mais simples.",
+   "formulas": [
+    "<b>Substituição:</b> u = g(x), du = g'(x) dx",
+    "<b>Por partes:</b> ∫u dv = u·v − ∫v du",
+    "<b>Frações parciais:</b> decomponha P(x)/Q(x), com grau P menor que grau Q",
+    "<b>Potências trig.:</b> use 1 − sen²x = cos²x e 1 + tg²x = sec²x",
+    "<b>Subst. trig.:</b> √(a²−x²) → x=a·sen θ; √(x²+a²) → x=a·tg θ"
+   ],
+   "tip": "Procure uma função interna acompanhada de sua derivada. Em integração por partes, use LIATE para escolher u."
+  },
+  {
+   "title": "APLICAÇÕES &amp;<br/>IMPRÓPRIAS",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "improprias",
+   "idea": "Integrais calculam medidas; limites tratam infinito e singularidades.",
+   "formulas": [
+    "<b>Área:</b> A = ∫[a,b] |f(x) − g(x)| dx",
+    "<b>Discos/anéis:</b> V = π∫[a,b] [R² − r²] dx",
+    "<b>Cascas:</b> V = 2π∫[a,b] (raio)(altura) dx",
+    "<b>Comprimento:</b> L = ∫[a,b] √(1 + [f'(x)]²) dx",
+    "<b>Intervalo infinito:</b> ∫[a,∞) f = lim b→∞ ∫[a,b] f",
+    "<b>p-teste:</b> ∫[1,∞) 1/xᵖ dx converge somente quando p &gt; 1"
+   ],
+   "tip": "Separe a integral em cada ponto de descontinuidade e avalie todos os limites. Uma única parte divergente faz o total divergir."
+  },
+  {
+   "title": "SEQUÊNCIAS &amp;<br/>SÉRIES",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "series",
+   "idea": "Convergência: termos ou somas parciais se aproximam de um valor.",
+   "formulas": [
+    "<b>Sequência:</b> aₙ → L quando n → ∞",
+    "<b>Série:</b> ∑aₙ converge quando Sₙ = a₁ + ··· + aₙ possui limite finito",
+    "<b>Teste do termo:</b> se aₙ não tende a 0, então ∑aₙ diverge",
+    "<b>Geométrica:</b> ∑a·rⁿ = a/(1−r), para |r| &lt; 1",
+    "<b>p-série:</b> ∑1/nᵖ converge somente quando p &gt; 1",
+    "<b>Testes:</b> comparação, comparação-limite, razão, raiz e alternada"
+   ],
+   "tip": "aₙ → 0 é necessário, mas não suficiente. A série harmônica ∑1/n é o contraexemplo clássico."
+  },
+  {
+   "title": "POTÊNCIAS &amp;<br/>TAYLOR",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "taylor",
+   "idea": "Representar funções por polinômios infinitos perto de um centro a.",
+   "formulas": [
+    "<b>Série de potências:</b> ∑cₙ(x−a)ⁿ converge para |x−a| &lt; R",
+    "<b>Intervalo:</b> ache R pela razão/raiz e teste as extremidades separadamente",
+    "<b>Taylor:</b> f(x) = Σ [f⁽ⁿ⁾(a)/n!] (x−a)ⁿ",
+    "<b>Maclaurin:</b> Taylor com centro a = 0",
+    "<b>Modelos:</b> eˣ = Σxⁿ/n!; 1/(1−x) = Σxⁿ, |x| &lt; 1",
+    "<b>Trig.:</b> sen x = Σ(−1)ⁿx²ⁿ⁺¹/(2n+1)!; cos x = Σ(−1)ⁿx²ⁿ/(2n)!"
+   ],
+   "tip": "O raio de convergência não decide as extremidades. Substitua cada extremo na série e aplique um teste novamente."
+  }
+ ],
+ "Circuitos_Eletricos": [
+  {
+   "title": "GRANDEZAS, OHM<br/>&amp; ASSOCIAÇÕES",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "ohm",
+   "idea": "Relacionar tensão, corrente, resistência e potência nos elementos básicos de um circuito.",
+   "formulas": [
+    "<b>Corrente:</b> I = ΔQ/Δt",
+    "<b>Tensão:</b> V = W/Q",
+    "<b>Lei de Ohm:</b> V = R·I",
+    "<b>Resistência:</b> R = ρL/A",
+    "<b>Potência:</b> P = V·I = I²R = V²/R",
+    "<b>Série:</b> R<sub>eq</sub> = R<sub>1</sub> + R<sub>2</sub> + ...",
+    "<b>Paralelo:</b> 1/R<sub>eq</sub> = Σ(1/R<sub>i</sub>)",
+    "<b>Divisor de tensão:</b> V<sub>k</sub> = V·R<sub>k</sub>/ΣR"
+   ],
+   "tip": "Antes das contas, marque polaridades e sentidos de corrente. Se o resultado sair negativo, o sentido real é o oposto ao assumido."
+  },
+  {
+   "title": "KIRCHHOFF &amp;<br/>ANÁLISE DE CIRCUITOS",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "kirchhoff",
+   "idea": "Aplicar conservação de carga e energia para encontrar correntes e tensões em redes elétricas.",
+   "formulas": [
+    "<b>LKC:</b> ΣI<sub>entrando</sub> = ΣI<sub>saindo</sub>",
+    "<b>LKT:</b> soma algébrica das tensões em uma malha = 0",
+    "<b>Nós:</b> escolha um nó de referência (0 V)",
+    "<b>Malhas:</b> defina uma corrente por malha e aplique LKT",
+    "<b>Superposição:</b> uma fonte independente por vez",
+    "<b>Thévenin:</b> circuito equivalente V<sub>Th</sub> em série com R<sub>Th</sub>",
+    "<b>Norton:</b> I<sub>N</sub> em paralelo com R<sub>N</sub>; R<sub>N</sub>=R<sub>Th</sub>",
+    "<b>Máx. potência:</b> R<sub>L</sub> = R<sub>Th</sub>"
+   ],
+   "tip": "Em análise nodal use LKC; em malhas use LKT. Escolher o método certo reduz muito o número de equações."
+  },
+  {
+   "title": "CAPACITORES, INDUTORES<br/>&amp; TRANSITÓRIOS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "transitorios",
+   "idea": "Entender armazenamento de energia e respostas temporais de circuitos RC e RL.",
+   "formulas": [
+    "<b>Capacitor:</b> i<sub>C</sub> = C·dv<sub>C</sub>/dt",
+    "<b>Indutor:</b> v<sub>L</sub> = L·di<sub>L</sub>/dt",
+    "<b>Energia:</b> W<sub>C</sub> = ½CV²; W<sub>L</sub> = ½LI²",
+    "<b>Continuidade:</b> v<sub>C</sub>(0⁺)=v<sub>C</sub>(0⁻)",
+    "<b>Continuidade:</b> i<sub>L</sub>(0⁺)=i<sub>L</sub>(0⁻)",
+    "<b>RC:</b> τ = R<sub>eq</sub>C",
+    "<b>RL:</b> τ = L/R<sub>eq</sub>",
+    "<b>1ª ordem:</b> x(t)=x(∞)+[x(0⁺)-x(∞)]e<super>-t/τ</super>"
+   ],
+   "tip": "Em t = 0⁺, capacitor não muda tensão instantaneamente e indutor não muda corrente instantaneamente. Essa é a chave dos transitórios."
+  },
+  {
+   "title": "CA, IMPEDÂNCIA<br/>&amp; POTÊNCIA",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "ca",
+   "idea": "Analisar circuitos senoidais usando fasores, impedâncias e relações de potência em regime permanente.",
+   "formulas": [
+    "<b>Senoide:</b> v(t)=V<sub>m</sub>cos(ωt+φ)",
+    "<b>Valor eficaz:</b> V<sub>rms</sub>=V<sub>m</sub>/√2; I<sub>rms</sub>=I<sub>m</sub>/√2",
+    "<b>Impedâncias:</b> Z<sub>R</sub>=R; Z<sub>L</sub>=jωL; Z<sub>C</sub>=1/(jωC)",
+    "<b>Lei de Ohm fasorial:</b> V = Z·I",
+    "<b>Reatância:</b> X<sub>L</sub>=ωL; X<sub>C</sub>=1/(ωC)",
+    "<b>Potência ativa:</b> P = V<sub>rms</sub>I<sub>rms</sub>cosφ",
+    "<b>Reativa:</b> Q = V<sub>rms</sub>I<sub>rms</sub>senφ; <b>aparente:</b> S = VI",
+    "<b>Fator de potência:</b> FP = cosφ"
+   ],
+   "tip": "Indutor atrasa a corrente; capacitor adianta. Em CA, use impedâncias como resistências complexas e mantenha os ângulos dos fasores."
+  }
+ ],
+ "Computacao_Grafica_Processamento_Imagens": [
+  {
+   "title": "IMAGEM DIGITAL<br/>&amp; CORES",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "imagem",
+   "idea": "Representar imagens como matrizes de pixels e entender resolução, profundidade e modelos de cor.",
+   "formulas": [
+    "<b>Pixel:</b> menor elemento da imagem digital",
+    "<b>Resolução:</b> largura × altura; afeta detalhe",
+    "<b>Profundidade:</b> b bits/pixel → 2<super>b</super> níveis",
+    "<b>Imagem em cinza:</b> 0 = preto, máximo = branco",
+    "<b>RGB:</b> mistura aditiva para telas",
+    "<b>CMY/CMYK:</b> mistura subtrativa para impressão",
+    "<b>HSV:</b> matiz, saturação e valor; útil em segmentação",
+    "<b>Histograma:</b> distribuição das intensidades da imagem"
+   ],
+   "tip": "Nem toda tarefa deve ser feita em RGB. Para brilho/contraste e limiarização, muitas vezes vale converter para escala de cinza ou HSV."
+  },
+  {
+   "title": "GEOMETRIA,<br/>TRANSFORMAÇÕES &amp; PROJEÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "transformacoes",
+   "idea": "Modelar objetos e mover pontos usando transformações lineares e projeções 2D/3D.",
+   "formulas": [
+    "<b>Translação:</b> desloca por (t<sub>x</sub>, t<sub>y</sub>, t<sub>z</sub>)",
+    "<b>Escala:</b> altera tamanho por fatores s<sub>x</sub>, s<sub>y</sub>, s<sub>z</sub>",
+    "<b>Rotação 2D:</b> [x' y'] = R(θ)[x y]",
+    "<b>Homogêneas:</b> permitem compor translação + rotação + escala",
+    "<b>Composição:</b> T = T<sub>n</sub>...T<sub>2</sub>T<sub>1</sub>",
+    "<b>Viewport:</b> mapeia mundo → tela",
+    "<b>Projeção ortográfica:</b> preserva paralelismo",
+    "<b>Perspectiva:</b> objetos distantes parecem menores"
+   ],
+   "tip": "A ordem importa: rotacionar e depois transladar não gera o mesmo resultado que transladar e depois rotacionar."
+  },
+  {
+   "title": "RASTERIZAÇÃO,<br/>ILUMINAÇÃO &amp; RENDER",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "render",
+   "idea": "Converter primitivas geométricas em pixels e controlar a aparência visual de uma cena.",
+   "formulas": [
+    "<b>Primitivas:</b> ponto, linha, triângulo, polígono",
+    "<b>Rasterização:</b> decide quais pixels serão ativados",
+    "<b>Interpolação:</b> cor, profundidade e textura variam nos fragmentos",
+    "<b>Z-buffer:</b> guarda profundidade visível por pixel",
+    "<b>Iluminação:</b> ambiente + difusa + especular",
+    "<b>Textura:</b> mapeia imagem sobre a superfície",
+    "<b>Aliasing:</b> serrilhado em bordas e detalhes finos",
+    "<b>Antialiasing:</b> suaviza serrilhado por amostragem/filtro"
+   ],
+   "tip": "Se a imagem parecer “serrilhada”, pense primeiro em resolução, amostragem e antialiasing antes de mexer no modelo geométrico."
+  },
+  {
+   "title": "FILTROS,<br/>SEGMENTAÇÃO &amp; MORFOLOGIA",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "processamento",
+   "idea": "Extrair informação, melhorar qualidade e separar regiões de interesse em imagens digitais.",
+   "formulas": [
+    "<b>Convolução:</b> saída = imagem * máscara/kernel",
+    "<b>Suavização:</b> média e Gauss reduzem ruído",
+    "<b>Realce:</b> Sobel/Laplaciano destacam bordas",
+    "<b>Limiarização:</b> separa objeto e fundo por intensidade",
+    "<b>Equalização:</b> redistribui histograma e melhora contraste",
+    "<b>Dilatação:</b> expande regiões claras/objeto",
+    "<b>Erosão:</b> reduz regiões claras/objeto",
+    "<b>Abertura/Fechamento:</b> removem ruídos e fecham falhas"
+   ],
+   "tip": "Escolha o filtro conforme o objetivo: suavizar para reduzir ruído, derivadas para bordas e morfologia para refinar a segmentação."
+  }
+ ],
+ "Desenvolvimento_em_Javascript": [
+  {
+   "title": "FUNDAMENTOS,<br/>TIPOS &amp; CONTROLE",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "fundamentos",
+   "idea": "Dominar a sintaxe essencial, tipos de dados e fluxo de execução antes de construir aplicações maiores.",
+   "formulas": [
+    "<b>Declaração:</b> const para referência fixa; let para valor mutável",
+    "<b>Tipos:</b> string, number, boolean, undefined, null, bigint, symbol",
+    "<b>Comparação:</b> prefira === e !== para evitar coerção implícita",
+    "<b>Controle:</b> if/else, switch e operador ternário",
+    "<b>Laços:</b> for, while, for...of; use break/continue quando necessário",
+    "<b>Escopo:</b> let/const respeitam bloco; var possui escopo de função",
+    "<b>Truthy/Falsy:</b> cuidado com 0, \"\", null, undefined, NaN e false"
+   ],
+   "tip": "Use const por padrão e mude para let somente quando precisar reatribuir. Prefira === para reduzir comportamentos inesperados."
+  },
+  {
+   "title": "FUNÇÕES, ARRAYS<br/>&amp; OBJETOS",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "dados",
+   "idea": "Organizar comportamento e dados com funções reutilizáveis, coleções e objetos.",
+   "formulas": [
+    "<b>Função:</b> parâmetros → processamento → retorno",
+    "<b>Arrow:</b> (x) =&gt; x*2; não possui seu próprio this",
+    "<b>Array:</b> push/pop; map, filter, find, reduce e forEach",
+    "<b>Objeto:</b> pares chave: valor; acesso obj.campo ou obj[\"campo\"]",
+    "<b>Desestruturação:</b> const {nome} = pessoa; const [a,b] = lista",
+    "<b>Spread:</b> {...obj} e [...arr] criam cópias rasas/combinações",
+    "<b>Rest:</b> (...args) agrupa argumentos restantes",
+    "<b>Imutabilidade:</b> evite alterar dados compartilhados sem necessidade"
+   ],
+   "tip": "map transforma, filter seleciona e reduce acumula. Escolher o método certo deixa o código menor e mais legível."
+  },
+  {
+   "title": "DOM, EVENTOS<br/>&amp; ASSÍNCRONO",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "dom",
+   "idea": "Conectar JavaScript à interface do navegador e lidar com tarefas que terminam no futuro.",
+   "formulas": [
+    "<b>DOM:</b> document.querySelector() localiza elementos",
+    "<b>Conteúdo:</b> textContent; classes via classList; atributos via setAttribute",
+    "<b>Eventos:</b> addEventListener(\"click\", callback)",
+    "<b>Event:</b> target identifica origem; preventDefault() cancela comportamento padrão",
+    "<b>Promise:</b> representa operação pendente, resolvida ou rejeitada",
+    "<b>async/await:</b> sintaxe legível sobre Promises",
+    "<b>Fetch:</b> const r = await fetch(url); const data = await r.json()",
+    "<b>Erros:</b> try/catch em operações assíncronas que podem falhar"
+   ],
+   "tip": "Não bloqueie a interface esperando rede ou timer. Use async/await e sempre trate erros de requisições externas."
+  },
+  {
+   "title": "ES6+, MÓDULOS<br/>&amp; BOAS PRÁTICAS",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "modulos",
+   "idea": "Estruturar projetos modernos com módulos, classes, tratamento de erros e código fácil de manter.",
+   "formulas": [
+    "<b>Módulos:</b> export / import separam responsabilidades",
+    "<b>Classes:</b> constructor, métodos, extends e super",
+    "<b>Optional chaining:</b> obj?.perfil?.nome evita acesso inválido",
+    "<b>Nullish:</b> valor ?? padrão usa fallback só para null/undefined",
+    "<b>Template string:</b> `Olá ${nome}` para interpolação",
+    "<b>JSON:</b> JSON.stringify() e JSON.parse()",
+    "<b>Qualidade:</b> funções pequenas, nomes claros, testes e linting"
+   ],
+   "tip": "Separe UI, regra de negócio e acesso a dados. Módulos pequenos e previsíveis tornam testes, manutenção e evolução muito mais simples."
+  }
+ ],
+ "Design_Thinking_Inovacao_Modelos_Negocios": [
+  {
+   "title": "DESIGN THINKING<br/>&amp; EMPATIA",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "empatia",
+   "idea": "Resolver problemas centrando o processo nas pessoas, suas dores, necessidades e contexto real.",
+   "formulas": [
+    "<b>Empatia:</b> observar, entrevistar e compreender o usuário",
+    "<b>Imersão:</b> coletar dados sobre contexto, hábitos e dificuldades",
+    "<b>Persona:</b> representação sintética do usuário-alvo",
+    "<b>Mapa de empatia:</b> pensa, sente, vê, fala, faz e escuta",
+    "<b>Jornada do usuário:</b> etapas, pontos de contato e emoções",
+    "<b>Problema:</b> deve ser humano, claro e relevante",
+    "<b>Insight:</b> interpretação útil gerada a partir das evidências",
+    "<b>Foco:</b> evitar solução antes de entender a necessidade"
+   ],
+   "tip": "Não comece pela tecnologia. Primeiro entenda a dor real do usuário e só depois pense na solução."
+  },
+  {
+   "title": "IDEAÇÃO,<br/>PROTOTIPAÇÃO &amp; TESTE",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "ideacao",
+   "idea": "Gerar alternativas, tornar ideias tangíveis rapidamente e aprender com testes de baixo custo.",
+   "formulas": [
+    "<b>Ideação:</b> gerar muitas alternativas antes de selecionar",
+    "<b>Divergir:</b> ampliar possibilidades sem julgar cedo",
+    "<b>Convergir:</b> priorizar ideias com critérios claros",
+    "<b>Brainstorming:</b> quantidade primeiro, avaliação depois",
+    "<b>Protótipo:</b> representação simples da solução",
+    "<b>Baixa fidelidade:</b> papel, esboço, wireframe e fluxo",
+    "<b>Teste:</b> observar comportamento real do usuário",
+    "<b>Iteração:</b> aprender → ajustar → testar novamente"
+   ],
+   "tip": "Protótipo não é produto final. Quanto mais barato e rápido for testar uma hipótese, menor o custo de errar."
+  },
+  {
+   "title": "MODELO DE NEGÓCIO<br/>&amp; VALOR",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "canvas",
+   "idea": "Explicar como uma organização cria, entrega e captura valor de forma sustentável.",
+   "formulas": [
+    "<b>Proposta de valor:</b> benefício central entregue ao cliente",
+    "<b>Segmentos:</b> grupos de clientes com necessidades semelhantes",
+    "<b>Canais:</b> como a proposta chega ao cliente",
+    "<b>Relacionamento:</b> como atrair, manter e ampliar clientes",
+    "<b>Receitas:</b> como o negócio captura valor financeiro",
+    "<b>Recursos-chave:</b> ativos essenciais para operar",
+    "<b>Atividades/parcerias:</b> o que fazer e com quem cooperar",
+    "<b>Custos:</b> principais despesas do modelo"
+   ],
+   "tip": "Uma boa ideia só vira modelo de negócio quando fica claro para quem gera valor, como entrega e como se sustenta."
+  },
+  {
+   "title": "INOVAÇÃO,<br/>VALIDAÇÃO &amp; ESTRATÉGIA",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "inovacao",
+   "idea": "Transformar hipóteses em aprendizado validado, reduzindo risco antes de escalar a solução.",
+   "formulas": [
+    "<b>Hipótese:</b> suposição que precisa ser testada",
+    "<b>MVP:</b> menor solução capaz de gerar aprendizado útil",
+    "<b>Validação:</b> evidência de problema, solução e valor",
+    "<b>Métrica:</b> indicador que ajuda a decidir, não só a observar",
+    "<b>Pivotar:</b> mudar direção mantendo o aprendizado acumulado",
+    "<b>Inovação incremental:</b> melhora algo existente",
+    "<b>Inovação disruptiva:</b> altera lógica de mercado/consumo",
+    "<b>Escala:</b> crescer preservando valor, qualidade e viabilidade"
+   ],
+   "tip": "Valide primeiro as hipóteses mais arriscadas. Escalar cedo uma solução errada só multiplica custo e retrabalho."
+  }
+ ],
+ "Eletronica_Analogica": [
+  {
+   "title": "DIODOS &amp;<br/>RETIFICADORES",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "diodo",
+   "idea": "Entender condução unidirecional, retificação e modelos práticos de diodos.",
+   "formulas": [
+    "<b>Diodo ideal:</b> ON ≈ curto; OFF ≈ circuito aberto",
+    "<b>Silício:</b> V<sub>D</sub> ≈ 0,7 V em condução",
+    "<b>Equação:</b> I<sub>D</sub> = I<sub>S</sub>(e<super>V<sub>D</sub>/(nV<sub>T</sub>)</super>-1)",
+    "<b>Meia onda:</b> usa 1 diodo; conduz em um semiciclo",
+    "<b>Onda completa:</b> ponte usa 4 diodos; |v(t)| na saída",
+    "<b>Filtro C:</b> reduz ripple após a retificação",
+    "<b>Zener:</b> opera em ruptura reversa para regulação",
+    "<b>Proteção:</b> sempre limite corrente com resistência"
+   ],
+   "tip": "Antes de calcular, descubra se cada diodo está ON ou OFF. Depois substitua pelo modelo equivalente e resolva o circuito."
+  },
+  {
+   "title": "TRANSISTOR BJT<br/>&amp; POLARIZAÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "bjt",
+   "idea": "Usar corrente de base para controlar corrente de coletor e definir o ponto de operação.",
+   "formulas": [
+    "<b>Relação:</b> I<sub>E</sub> = I<sub>C</sub> + I<sub>B</sub>",
+    "<b>Ganho:</b> β = I<sub>C</sub>/I<sub>B</sub>",
+    "<b>Ativa:</b> V<sub>BE</sub> ≈ 0,7 V e I<sub>C</sub> ≈ βI<sub>B</sub>",
+    "<b>Corte:</b> I<sub>B</sub>≈0 ⇒ I<sub>C</sub>≈0",
+    "<b>Saturação:</b> V<sub>CE</sub> ≈ 0,2 V (modelo prático)",
+    "<b>Polarização:</b> fixa o ponto Q para amplificação linear",
+    "<b>Emissor comum:</b> fornece ganho de tensão e inversão",
+    "<b>Pequeno sinal:</b> g<sub>m</sub> ≈ I<sub>C</sub>/V<sub>T</sub>"
+   ],
+   "tip": "Para amplificar sem distorção, mantenha o BJT na região ativa. Corte e saturação são típicos de operação como chave."
+  },
+  {
+   "title": "MOSFET &amp;<br/>AMPLIFICADORES",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "mosfet",
+   "idea": "Controlar corrente pelo campo elétrico no gate e analisar estágios de ganho.",
+   "formulas": [
+    "<b>Gate:</b> corrente ideal ≈ 0 ⇒ alta impedância de entrada",
+    "<b>Corte:</b> V<sub>GS</sub> &lt; V<sub>TH</sub> ⇒ I<sub>D</sub>≈0",
+    "<b>Triodo:</b> V<sub>DS</sub> &lt; V<sub>GS</sub>-V<sub>TH</sub>",
+    "<b>Saturação:</b> V<sub>DS</sub> ≥ V<sub>GS</sub>-V<sub>TH</sub>",
+    "<b>Modelo:</b> I<sub>D</sub> ≈ k(V<sub>GS</sub>-V<sub>TH</sub>)²/2",
+    "<b>Fonte comum:</b> ganho de tensão com inversão",
+    "<b>Seguidor de fonte:</b> A<sub>v</sub>≈1 e baixa R<sub>out</sub>",
+    "<b>Pequeno sinal:</b> g<sub>m</sub> = ∂I<sub>D</sub>/∂V<sub>GS</sub>"
+   ],
+   "tip": "Primeiro identifique a região de operação do MOSFET. As equações mudam entre corte, triodo e saturação."
+  },
+  {
+   "title": "AMPLIFICADOR<br/>OPERACIONAL",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "opamp",
+   "idea": "Usar realimentação para construir amplificadores, somadores, integradores e filtros ativos.",
+   "formulas": [
+    "<b>Ideal:</b> A→∞, R<sub>in</sub>→∞, R<sub>out</sub>→0",
+    "<b>Realimentação negativa:</b> v<sub>+</sub> ≈ v<sub>-</sub> e i<sub>+</sub>≈i<sub>-</sub>≈0",
+    "<b>Inversor:</b> A<sub>v</sub> = -R<sub>f</sub>/R<sub>in</sub>",
+    "<b>Não inversor:</b> A<sub>v</sub> = 1 + R<sub>f</sub>/R<sub>1</sub>",
+    "<b>Seguidor:</b> A<sub>v</sub> ≈ 1",
+    "<b>Somador:</b> v<sub>o</sub> = -R<sub>f</sub>Σ(v<sub>i</sub>/R<sub>i</sub>)",
+    "<b>Integrador:</b> v<sub>o</sub> = -(1/RC)∫v<sub>i</sub>dt",
+    "<b>Saturação:</b> saída não pode ultrapassar os trilhos de alimentação"
+   ],
+   "tip": "O “curto virtual” v+≈v− só vale com realimentação negativa e operação linear. Se a saída saturar, essa hipótese deixa de valer."
+  }
+ ],
+ "Engenharia_de_Software": [
+  {
+   "title": "PROCESSOS &amp;<br/>CICLO DE VIDA",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "processos",
+   "idea": "Organizar o desenvolvimento em etapas, artefatos e ciclos de feedback para entregar software com previsibilidade.",
+   "formulas": [
+    "<b>Ciclo de vida:</b> requisitos → projeto → código → testes → manutenção",
+    "<b>Cascata:</b> etapas sequenciais; mudanças tardias custam mais",
+    "<b>Incremental:</b> entrega em partes funcionais",
+    "<b>Iterativo:</b> refina a solução em ciclos",
+    "<b>Ágil:</b> entregas frequentes + adaptação",
+    "<b>Scrum:</b> Backlog, Sprint, Review e Retrospective",
+    "<b>Kanban:</b> fluxo visual, limite de WIP e melhoria contínua",
+    "<b>DevOps:</b> integra dev, operações e automação"
+   ],
+   "tip": "Processo não é burocracia por si só. O objetivo é reduzir risco, dar visibilidade e criar feedback rápido para corrigir o rumo cedo."
+  },
+  {
+   "title": "REQUISITOS,<br/>UML &amp; MODELAGEM",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "requisitos",
+   "idea": "Entender o problema antes de codificar, registrando comportamento, regras e estrutura do sistema.",
+   "formulas": [
+    "<b>Requisito funcional:</b> o que o sistema deve fazer",
+    "<b>Não funcional:</b> qualidade, desempenho, segurança, usabilidade etc.",
+    "<b>História de usuário:</b> Como [papel], quero [objetivo], para [valor]",
+    "<b>Critério de aceitação:</b> condição verificável para considerar algo pronto",
+    "<b>Caso de uso:</b> interação ator ↔ sistema para atingir um objetivo",
+    "<b>UML:</b> casos de uso, classes, sequência, atividade e estados",
+    "<b>Classe:</b> atributos + operações; associações modelam relações",
+    "<b>Validação:</b> confirmar se requisitos representam a necessidade real"
+   ],
+   "tip": "Requisito bom deve ser claro, testável e sem ambiguidade. Se não dá para verificar depois, provavelmente ainda está vago."
+  },
+  {
+   "title": "ARQUITETURA, DESIGN<br/>&amp; QUALIDADE",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "arquitetura",
+   "idea": "Estruturar o sistema para reduzir acoplamento, aumentar coesão e facilitar evolução e manutenção.",
+   "formulas": [
+    "<b>Coesão:</b> responsabilidades relacionadas ficam juntas",
+    "<b>Acoplamento:</b> dependências entre módulos; quanto menor, melhor",
+    "<b>SOLID:</b> princípios para design orientado a objetos sustentável",
+    "<b>Camadas:</b> apresentação, negócio e dados separam responsabilidades",
+    "<b>MVC:</b> Model, View e Controller",
+    "<b>API:</b> contrato de comunicação entre componentes/sistemas",
+    "<b>Padrões:</b> soluções recorrentes como Factory, Strategy e Observer",
+    "<b>Qualidade:</b> manutenibilidade, confiabilidade, segurança e desempenho"
+   ],
+   "tip": "Prefira módulos pequenos, coesos e com interfaces claras. Alta coesão + baixo acoplamento facilita teste, troca e evolução."
+  },
+  {
+   "title": "TESTES, VERSIONAMENTO<br/>&amp; MANUTENÇÃO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "testes",
+   "idea": "Controlar mudanças e detectar defeitos cedo por automação, integração contínua e disciplina de manutenção.",
+   "formulas": [
+    "<b>Unitário:</b> verifica uma unidade isolada",
+    "<b>Integração:</b> verifica interação entre módulos",
+    "<b>Sistema:</b> valida o produto completo",
+    "<b>Regressão:</b> verifica se mudanças quebraram algo",
+    "<b>Pirâmide:</b> muitos unitários; poucos E2E",
+    "<b>Git:</b> commit, branch, merge e pull request",
+    "<b>CI/CD:</b> build, testes e entrega automatizados"
+   ],
+   "tip": "Automatize o que é repetitivo. Testes e versionamento não eliminam defeitos, mas tornam mudanças mais seguras e rastreáveis."
+  }
+ ],
+ "Fisica_Geral_Experimental_Mecanica_Energia": [
+  {
+   "title": "CINEMÁTICA",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "cinematica",
+   "idea": "Descrever o movimento por posição, velocidade, aceleração e gráficos.",
+   "formulas": [
+    "<b>Velocidade:</b> v<sub>m</sub> = Δs/Δt; v = ds/dt",
+    "<b>Aceleração:</b> a<sub>m</sub> = Δv/Δt; a = dv/dt",
+    "<b>MRU:</b> s = s₀ + v·t",
+    "<b>MRUV:</b> v = v₀ + a·t; s = s₀ + v₀t + a·t²/2",
+    "<b>Torricelli:</b> v² = v₀² + 2a·Δs",
+    "<b>Lançamento:</b> x = v₀cosθ·t; y = v₀senθ·t - g·t²/2"
+   ],
+   "tip": "Nos gráficos: inclinação de s×t = v; inclinação de v×t = a; área sob v×t = Δs."
+  },
+  {
+   "title": "DINÂMICA &amp;<br/>LEIS DE NEWTON",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "dinamica",
+   "idea": "Relacionar as forças que atuam no corpo à mudança de seu movimento.",
+   "formulas": [
+    "<b>2ª lei:</b> ΣF = m·a",
+    "<b>Peso:</b> P = m·g; <b>normal:</b> perpendicular ao contato",
+    "<b>Atrito:</b> f<sub>s</sub> ≤ μ<sub>s</sub>N; f<sub>k</sub> = μ<sub>k</sub>N",
+    "<b>Mola:</b> F = -k·x",
+    "<b>Mov. circular:</b> ΣF<sub>rad</sub> = m·v²/R = m·ω²R",
+    "<b>Equilíbrio:</b> ΣF<sub>x</sub> = 0 e ΣF<sub>y</sub> = 0"
+   ],
+   "tip": "Isole o corpo e faça o diagrama de forças. Força centrípeta não é uma força nova: é a resultante radial."
+  },
+  {
+   "title": "TRABALHO, ENERGIA<br/>&amp; POTÊNCIA",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "energia",
+   "idea": "Acompanhar transferências de energia e prever velocidades sem calcular o tempo.",
+   "formulas": [
+    "<b>Trabalho:</b> W = F·d·cosθ",
+    "<b>Teorema trabalho-energia:</b> W<sub>resultante</sub> = ΔK",
+    "<b>Cinética:</b> K = m·v²/2",
+    "<b>Potenciais:</b> U<sub>g</sub> = mgh; U<sub>e</sub> = kx²/2",
+    "<b>Conservação:</b> K<sub>i</sub> + U<sub>i</sub> = K<sub>f</sub> + U<sub>f</sub> (sem dissipação)",
+    "<b>Não conservativas:</b> W<sub>nc</sub> = Δ(K + U)",
+    "<b>Potência:</b> Pot = W/Δt = F·v"
+   ],
+   "tip": "Escolha o nível de U = 0 antes das contas. Com atrito, inclua o trabalho não conservativo."
+  },
+  {
+   "title": "MOMENTO, COLISÕES<br/>&amp; ROTAÇÃO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "momento",
+   "idea": "Usar leis de conservação para sistemas em translação e rotação.",
+   "formulas": [
+    "<b>Quantidade de movimento:</b> p = m·v",
+    "<b>Impulso:</b> J = ∫F dt = Δp ≈ F<sub>m</sub>·Δt",
+    "<b>Conservação:</b> Σp<sub>i</sub> = Σp<sub>f</sub>, se J<sub>ext</sub> ≈ 0",
+    "<b>Colisões:</b> elástica conserva p e K; inelástica conserva p",
+    "<b>Torque:</b> τ = r·F·senθ; Στ = I·α",
+    "<b>Rotação:</b> K<sub>rot</sub> = I·ω²/2; L = I·ω",
+    "<b>Rolamento:</b> v = ωR"
+   ],
+   "tip": "Defina o sistema e o sentido positivo antes de conservar p ou L. Sem impulso/torque externo, o total se mantém."
+  }
+ ],
+ "Fundamentos_Inteligencia_Artificial": [
+  {
+   "title": "AGENTES, BUSCA<br/>&amp; RESOLUÇÃO DE PROBLEMAS",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "busca",
+   "idea": "Modelar um agente que percebe o ambiente, escolhe ações e busca uma sequência que alcance o objetivo.",
+   "formulas": [
+    "<b>Agente:</b> percepção → decisão → ação",
+    "<b>Estado:</b> representação de uma situação do problema",
+    "<b>Espaço de estados:</b> conjunto de estados + ações possíveis",
+    "<b>BFS:</b> busca em largura; completa; custo alto de memória",
+    "<b>DFS:</b> busca em profundidade; pouca memória; pode se perder",
+    "<b>Custo uniforme:</b> expande menor custo acumulado g(n)",
+    "<b>A*:</b> f(n)=g(n)+h(n)",
+    "<b>Heurística:</b> estimativa do custo até o objetivo"
+   ],
+   "tip": "Em busca informada, a qualidade de h(n) muda muito o desempenho. Heurística admissível não superestima o custo real."
+  },
+  {
+   "title": "CONHECIMENTO,<br/>LÓGICA &amp; INFERÊNCIA",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "logica",
+   "idea": "Representar fatos e regras de forma que o sistema possa inferir novas informações.",
+   "formulas": [
+    "<b>Lógica proposicional:</b> fatos verdadeiros/falsos conectados por operadores",
+    "<b>Operadores:</b> ¬, ∧, ∨, →, ↔",
+    "<b>Predicados:</b> descrevem propriedades e relações entre objetos",
+    "<b>Quantificadores:</b> ∀ (todo) e ∃ (existe)",
+    "<b>Base de conhecimento:</b> conjunto de fatos + regras",
+    "<b>Inferência:</b> derivar conclusões a partir do conhecimento",
+    "<b>Encadeamento:</b> para frente parte dos fatos; para trás parte da meta",
+    "<b>Ontologia:</b> conceitos, relações e restrições de um domínio"
+   ],
+   "tip": "Separar conhecimento de mecanismo de inferência facilita manutenção. Em lógica, atenção ao sentido de implicação e aos quantificadores."
+  },
+  {
+   "title": "APRENDIZADO DE<br/>MÁQUINA &amp; MODELOS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "ml",
+   "idea": "Aprender padrões a partir de dados para prever, classificar ou agrupar exemplos novos.",
+   "formulas": [
+    "<b>Supervisionado:</b> aprende com entradas e rótulos",
+    "<b>Não supervisionado:</b> descobre estrutura sem rótulos",
+    "<b>Classificação:</b> prevê categoria; <b>regressão:</b> prevê valor",
+    "<b>Treino/validação/teste:</b> separar ajuste de avaliação",
+    "<b>Overfitting:</b> memoriza treino e generaliza mal",
+    "<b>Underfitting:</b> modelo simples demais para o padrão",
+    "<b>Métricas:</b> acurácia, precisão, recall, F1, erro médio",
+    "<b>Features:</b> atributos usados pelo modelo para aprender"
+   ],
+   "tip": "Nunca avalie o modelo apenas nos dados de treino. O objetivo é generalizar para dados novos, não memorizar exemplos conhecidos."
+  },
+  {
+   "title": "REDES NEURAIS,<br/>ÉTICA &amp; APLICAÇÕES",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "neural",
+   "idea": "Combinar modelos inspirados em neurônios com princípios de uso responsável e avaliação de impacto.",
+   "formulas": [
+    "<b>Neurônio:</b> z = Σwᵢxᵢ + b; saída = φ(z)",
+    "<b>Camadas:</b> entrada → ocultas → saída",
+    "<b>Treinamento:</b> ajustar pesos para reduzir uma função de perda",
+    "<b>Backpropagation:</b> propaga gradientes para atualizar pesos",
+    "<b>Deep learning:</b> redes com múltiplas camadas",
+    "<b>Aplicações:</b> visão, linguagem, recomendação, previsão e controle",
+    "<b>Viés:</b> dados/modelos podem reproduzir desigualdades",
+    "<b>Responsabilidade:</b> transparência, privacidade, segurança e supervisão"
+   ],
+   "tip": "Modelo com boa métrica não é automaticamente um bom sistema. Avalie qualidade dos dados, vieses, riscos e impacto no contexto real."
+  }
+ ],
+ "Linguagem_Orientada_a_Objetos": [
+  {
+   "title": "CLASSES, OBJETOS<br/>&amp; ENCAPSULAMENTO",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "classes",
+   "idea": "Modelar entidades com estado e comportamento, protegendo detalhes internos da implementação.",
+   "formulas": [
+    "<b>Classe:</b> molde que define atributos e métodos",
+    "<b>Objeto:</b> instância concreta criada a partir da classe",
+    "<b>Atributo:</b> representa estado/dados do objeto",
+    "<b>Método:</b> representa comportamento/operação",
+    "<b>Construtor:</b> inicializa o estado do objeto",
+    "<b>Encapsulamento:</b> restringe acesso ao estado interno",
+    "<b>Visibilidade:</b> public, private, protected",
+    "<b>Get/Set:</b> controlam leitura e alteração de atributos"
+   ],
+   "tip": "Evite deixar atributos públicos sem necessidade. Encapsular permite validar regras e reduzir acoplamento."
+  },
+  {
+   "title": "HERANÇA,<br/>POLIMORFISMO &amp; ABSTRAÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "heranca",
+   "idea": "Reutilizar comportamento comum e trabalhar com diferentes implementações por uma mesma interface.",
+   "formulas": [
+    "<b>Herança:</b> classe filha reutiliza/estende a classe base",
+    "<b>É-um:</b> relação típica para herança",
+    "<b>Sobrescrita:</b> redefinir método herdado",
+    "<b>Polimorfismo:</b> mesma chamada, comportamentos diferentes",
+    "<b>Classe abstrata:</b> define estrutura comum e pode ter métodos abstratos",
+    "<b>Interface:</b> contrato de operações esperadas",
+    "<b>Upcasting:</b> tratar objeto filho como tipo pai",
+    "<b>Preferência:</b> composição costuma ser mais flexível que herança"
+   ],
+   "tip": "Use herança quando houver relação “é-um” verdadeira. Para apenas reutilizar funcionalidade, composição costuma ser mais segura."
+  },
+  {
+   "title": "ASSOCIAÇÃO,<br/>COMPOSIÇÃO &amp; UML",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "uml",
+   "idea": "Representar como objetos colaboram e como as relações aparecem no modelo orientado a objetos.",
+   "formulas": [
+    "<b>Associação:</b> objetos conhecem/colaboram entre si",
+    "<b>Agregação:</b> relação todo-parte fraca; partes podem existir sozinhas",
+    "<b>Composição:</b> todo-parte forte; ciclo de vida das partes depende do todo",
+    "<b>Dependência:</b> uso temporário de outra classe",
+    "<b>Multiplicidade:</b> 1, 0..1, 1..*, 0..*",
+    "<b>UML:</b> classe mostra nome, atributos e operações",
+    "<b>Acoplamento:</b> dependência entre classes; quanto menor, melhor",
+    "<b>Coesão:</b> foco interno da classe; quanto maior, melhor"
+   ],
+   "tip": "Em UML, não desenhe relações só por aparência. Cada seta deve representar uma relação real no código ou no domínio."
+  },
+  {
+   "title": "EXCEÇÕES, GENÉRICOS<br/>&amp; BOAS PRÁTICAS",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "boas",
+   "idea": "Construir código OO mais reutilizável, robusto e fácil de manter.",
+   "formulas": [
+    "<b>Exceção:</b> representa situação anormal durante a execução",
+    "<b>try/catch/finally:</b> tratar erro e garantir limpeza de recursos",
+    "<b>throw:</b> lançar explicitamente uma exceção",
+    "<b>Genéricos:</b> reutilizam estruturas com segurança de tipos",
+    "<b>SOLID:</b> princípios para reduzir acoplamento e facilitar evolução",
+    "<b>SRP:</b> classe deve ter uma responsabilidade principal",
+    "<b>OCP:</b> aberto para extensão, fechado para modificação",
+    "<b>Boas práticas:</b> nomes claros, métodos curtos, testes e baixo acoplamento"
+   ],
+   "tip": "OO não é só criar classes. O objetivo é distribuir responsabilidades de forma clara e tornar mudanças futuras menos custosas."
+  }
+ ],
+ "Metodos_Matematicos": [
+  {
+   "title": "ÁLGEBRA LINEAR<br/>&amp; SISTEMAS",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "algebra",
+   "idea": "Representar problemas com vetores, matrizes e sistemas lineares para encontrar soluções de forma estruturada.",
+   "formulas": [
+    "<b>Sistema linear:</b> A·x = b",
+    "<b>Determinante:</b> det(A) ≠ 0 → solução única",
+    "<b>Inversa:</b> x = A<super>-1</super>b, quando A é inversível",
+    "<b>Escalonamento:</b> operações elementares preservam as soluções",
+    "<b>Produto escalar:</b> u·v = |u||v|cosθ",
+    "<b>Norma:</b> ||v|| = √(v·v)",
+    "<b>Autovalor:</b> A·v = λv",
+    "<b>Diagonalização:</b> A = P·D·P<super>-1</super>, quando possível"
+   ],
+   "tip": "Antes de calcular a inversa, veja se escalonamento resolve mais rápido. Em sistemas grandes, eliminar incógnitas costuma ser mais eficiente."
+  },
+  {
+   "title": "EQUAÇÕES DIFERENCIAIS<br/>&amp; MODELAGEM",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "edo",
+   "idea": "Modelar variações no tempo ou no espaço por equações envolvendo derivadas e condições iniciais.",
+   "formulas": [
+    "<b>EDO 1ª ordem:</b> y' = f(x,y)",
+    "<b>Separável:</b> dy/g(y) = f(x)dx",
+    "<b>Linear:</b> y' + p(x)y = q(x)",
+    "<b>Fator integrante:</b> μ(x)=e<super>∫p(x)dx</super>",
+    "<b>2ª ordem:</b> ay'' + by' + cy = g(x)",
+    "<b>Homogênea:</b> ar² + br + c = 0",
+    "<b>Condição inicial:</b> seleciona uma solução particular",
+    "<b>Modelos:</b> crescimento, decaimento, oscilação e circuitos"
+   ],
+   "tip": "Classifique a equação antes de resolver: ordem, linearidade e forma separável. Isso aponta diretamente para o método adequado."
+  },
+  {
+   "title": "SÉRIES, FOURIER<br/>&amp; APROXIMAÇÕES",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "series",
+   "idea": "Aproximar funções e sinais por somas de termos simples, analisando convergência e frequência.",
+   "formulas": [
+    "<b>Série:</b> Σa<sub>n</sub>; estudar convergência antes de manipular",
+    "<b>Geométrica:</b> Σar<super>n</super> converge se |r|&lt;1",
+    "<b>Taylor:</b> f(x)=Σ f<super>(n)</super>(a)(x-a)<super>n</super>/n!",
+    "<b>Maclaurin:</b> Taylor com a = 0",
+    "<b>Fourier:</b> f(x) ≈ a₀/2 + Σ[a<sub>n</sub>cos(nx)+b<sub>n</sub>sen(nx)]",
+    "<b>Paridade:</b> função par → cossenos; ímpar → senos",
+    "<b>Erro:</b> mais termos geralmente melhoram a aproximação local",
+    "<b>Aplicação:</b> sinais, vibrações, calor e processamento"
+   ],
+   "tip": "Em Taylor, escolha o centro perto do ponto de interesse. Em Fourier, observe simetria antes de calcular coeficientes: ela economiza muito trabalho."
+  },
+  {
+   "title": "LAPLACE, COMPLEXOS<br/>&amp; FERRAMENTAS",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "laplace",
+   "idea": "Transformar problemas diferenciais e oscilatórios em formas algébricas mais simples de manipular.",
+   "formulas": [
+    "<b>Complexo:</b> z = a + bi; i² = -1",
+    "<b>Polar:</b> z = r(cosθ + i·senθ) = re<super>iθ</super>",
+    "<b>Euler:</b> e<super>iθ</super> = cosθ + i·senθ",
+    "<b>Laplace:</b> L{f(t)} = ∫₀<super>∞</super> e<super>-st</super>f(t)dt",
+    "<b>Derivada:</b> L{f'} = sF(s) - f(0)",
+    "<b>Integração:</b> L{∫f(t)dt} = F(s)/s",
+    "<b>Convolução:</b> L{f*g} = F(s)G(s)",
+    "<b>Aplicação:</b> EDOs, sistemas lineares, controle e circuitos"
+   ],
+   "tip": "Laplace é especialmente útil quando há condições iniciais. Transforme → resolva em s → faça a transformada inversa para voltar ao tempo."
+  }
+ ],
+ "Modelagem_de_Dados": [
+  {
+   "title": "MODELO CONCEITUAL<br/>&amp; ENTIDADES",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "conceitual",
+   "idea": "Representar o domínio antes do banco, identificando entidades, atributos e regras do negócio.",
+   "formulas": [
+    "<b>Entidade:</b> objeto relevante do domínio",
+    "<b>Atributo:</b> característica que descreve uma entidade",
+    "<b>Identificador:</b> atributo(s) que distinguem ocorrências",
+    "<b>Entidade forte:</b> possui identificador próprio",
+    "<b>Entidade fraca:</b> depende de outra para identificação",
+    "<b>Atributo composto:</b> pode ser decomposto em partes",
+    "<b>Multivalorado:</b> pode assumir vários valores",
+    "<b>DER:</b> visão gráfica do modelo conceitual"
+   ],
+   "tip": "Comece pelo negócio, não pelas tabelas. Se você entende entidades e regras, o modelo lógico fica muito mais simples."
+  },
+  {
+   "title": "RELAÇÕES &amp;<br/>CARDINALIDADE",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "relacoes",
+   "idea": "Definir como entidades se conectam e quantas ocorrências podem participar de cada relação.",
+   "formulas": [
+    "<b>1:1:</b> uma ocorrência relaciona-se com no máximo uma",
+    "<b>1:N:</b> uma ocorrência relaciona-se com várias da outra entidade",
+    "<b>N:N:</b> várias de ambos os lados; vira entidade associativa",
+    "<b>Cardinalidade mínima:</b> participação opcional (0) ou obrigatória (1)",
+    "<b>Cardinalidade máxima:</b> 1 ou N",
+    "<b>Relacionamento:</b> pode possuir atributos próprios",
+    "<b>Auto-relacionamento:</b> entidade relaciona-se com ela mesma",
+    "<b>Regra:</b> cardinalidade deve refletir o negócio real"
+   ],
+   "tip": "Leia a relação nos dois sentidos. Pergunte: “quantos A para cada B?” e depois “quantos B para cada A?”."
+  },
+  {
+   "title": "MODELO LÓGICO<br/>&amp; NORMALIZAÇÃO",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "logico",
+   "idea": "Converter o modelo conceitual em tabelas consistentes, reduzindo redundância e anomalias.",
+   "formulas": [
+    "<b>Relação:</b> tabela; <b>tupla:</b> linha; <b>atributo:</b> coluna",
+    "<b>PK:</b> identifica cada registro de forma única",
+    "<b>FK:</b> implementa relacionamentos entre tabelas",
+    "<b>1FN:</b> valores atômicos, sem grupos repetitivos",
+    "<b>2FN:</b> 1FN + sem dependência parcial da chave",
+    "<b>3FN:</b> 2FN + sem dependência transitiva",
+    "<b>N:N:</b> criar tabela associativa com FKs"
+   ],
+   "tip": "Normalizar não é “quebrar tabelas por quebrar”. O objetivo é eliminar dependências inadequadas sem perder significado."
+  },
+  {
+   "title": "MODELO FÍSICO,<br/>CHAVES &amp; INTEGRIDADE",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "fisico",
+   "idea": "Preparar o modelo para implementação no SGBD, definindo tipos, restrições e decisões de desempenho.",
+   "formulas": [
+    "<b>Tipo de dado:</b> escolher domínio adequado para cada atributo",
+    "<b>NOT NULL:</b> impede ausência de valor",
+    "<b>UNIQUE:</b> impede duplicidades em uma coluna/conjunto",
+    "<b>CHECK:</b> aplica regra de domínio",
+    "<b>FK:</b> mantém integridade referencial",
+    "<b>ON DELETE/UPDATE:</b> definir RESTRICT, CASCADE, SET NULL etc.",
+    "<b>Índice:</b> melhora leitura, mas aumenta custo de escrita",
+    "<b>Modelo físico:</b> considera SGBD, volume, acesso e performance"
+   ],
+   "tip": "No físico, cada restrição deve ter motivo. Use integridade no banco para impedir dados inválidos, não apenas na aplicação."
+  }
+ ],
+ "Principios_Eletricidade_Magnetismo": [
+  {
+   "title": "CARGA, FORÇA<br/>&amp; LEI DE COULOMB",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "coulomb",
+   "idea": "Descrever como cargas interagem por atração, repulsão e superposição de forças.",
+   "formulas": [
+    "<b>Carga:</b> q = n·e, com e = 1,6×10<super>-19</super> C",
+    "<b>Sinais:</b> iguais repelem; opostas atraem",
+    "<b>Coulomb:</b> F = k·|q<sub>1</sub>q<sub>2</sub>|/r²",
+    "<b>Direção:</b> a força age na reta que liga as cargas",
+    "<b>Constante:</b> k = 9,0×10<super>9</super> N·m²/C²",
+    "<b>Superposição:</b> F<sub>result</sub> = ΣF<sub>i</sub>",
+    "<b>Condutor:</b> cargas livres se redistribuem até o equilíbrio eletrostático",
+    "<b>Campo nulo no interior:</b> em equilíbrio, E = 0 no interior do condutor"
+   ],
+   "tip": "Antes de somar forças, desenhe os vetores e escolha um eixo de referência. O sinal de q importa na direção da força."
+  },
+  {
+   "title": "CAMPO ELÉTRICO<br/>&amp; POTENCIAL",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "campo",
+   "idea": "Campo descreve força por carga; potencial descreve energia por carga.",
+   "formulas": [
+    "<b>Campo:</b> E = F/q",
+    "<b>Carga puntiforme:</b> E = k|q|/r²",
+    "<b>Direção:</b> sai de + e entra em −",
+    "<b>Potencial:</b> V = U/q",
+    "<b>Carga puntiforme:</b> V = kq/r",
+    "<b>Relação:</b> ΔU = q·ΔV",
+    "<b>Campo uniforme:</b> |ΔV| = E·d (deslocamento paralelo ao campo)",
+    "<b>Equipotenciais:</b> são sempre perpendiculares às linhas de campo"
+   ],
+   "tip": "Campo é vetor; potencial é escalar. Essa diferença evita muitos erros em questões conceituais e de sinal."
+  },
+  {
+   "title": "CAPACITORES,<br/>CORRENTE &amp; CIRCUITOS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "circuitos",
+   "idea": "Relacionar armazenamento de carga, fluxo de corrente e comportamento básico de circuitos.",
+   "formulas": [
+    "<b>Capacitância:</b> C = Q/ΔV",
+    "<b>Placas paralelas:</b> C = εA/d",
+    "<b>Energia no capacitor:</b> U = ½C(ΔV)² = Q²/(2C)",
+    "<b>Corrente:</b> I = ΔQ/Δt",
+    "<b>Lei de Ohm:</b> V = R·I",
+    "<b>Resistência:</b> R = ρL/A",
+    "<b>Potência:</b> P = V·I = I²R = V²/R",
+    "<b>Associação:</b> resistores em série somam; em paralelo somam inversos"
+   ],
+   "tip": "Em capacitor ideal em regime DC permanente, a corrente tende a zero. Em circuitos, sempre confira unidade e associação."
+  },
+  {
+   "title": "MAGNETISMO<br/>&amp; INDUÇÃO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "magnetismo",
+   "idea": "Entender forças magnéticas, movimento circular e indução causada por variação do fluxo.",
+   "formulas": [
+    "<b>Força magnética:</b> F = |q|vB·senθ",
+    "<b>Fio com corrente:</b> F = I·L·B·senθ",
+    "<b>Movimento circular:</b> r = m·v/(|q|B)",
+    "<b>Fluxo:</b> Φ<sub>B</sub> = B·A·cosθ",
+    "<b>Faraday:</b> ε = -dΦ<sub>B</sub>/dt",
+    "<b>Lenz:</b> a corrente induzida se opõe à variação do fluxo",
+    "<b>Fio longo:</b> B = μI/(2πr)",
+    "<b>Regra da mão direita:</b> define sentido de B e das forças"
+   ],
+   "tip": "O sinal “−” em Faraday é a Lei de Lenz: a indução sempre reage contra a variação do fluxo magnético."
+  }
+ ],
+ "Programacao_Banco_de_Dados": [
+  {
+   "title": "MODELO RELACIONAL<br/>&amp; SQL BÁSICO",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "modelo",
+   "idea": "Representar dados em tabelas, linhas e colunas, usando chaves para garantir integridade.",
+   "formulas": [
+    "<b>Tabela:</b> relação formada por tuplas (linhas) e atributos (colunas)",
+    "<b>Chave primária:</b> identifica unicamente cada registro",
+    "<b>Chave estrangeira:</b> referencia a PK de outra tabela",
+    "<b>DDL:</b> CREATE, ALTER, DROP",
+    "<b>DML:</b> INSERT, UPDATE, DELETE",
+    "<b>Consulta básica:</b> SELECT colunas FROM tabela",
+    "<b>Filtro:</b> WHERE, operadores AND/OR/NOT",
+    "<b>Integridade:</b> entidade, domínio e referencial"
+   ],
+   "tip": "Antes de escrever SQL, entenda o modelo: quem é a entidade, qual é a PK e quais relações existem entre as tabelas."
+  },
+  {
+   "title": "CONSULTAS, JOINS<br/>&amp; AGREGAÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "consultas",
+   "idea": "Combinar tabelas e resumir dados para responder perguntas do negócio.",
+   "formulas": [
+    "<b>Projeção:</b> escolher colunas no SELECT",
+    "<b>Seleção:</b> filtrar linhas no WHERE",
+    "<b>JOIN:</b> INNER, LEFT, RIGHT e FULL conforme a necessidade",
+    "<b>Junção:</b> ON tabela1.chave = tabela2.chave",
+    "<b>Agregação:</b> COUNT, SUM, AVG, MIN, MAX",
+    "<b>GROUP BY:</b> agrupa linhas para resumir valores",
+    "<b>HAVING:</b> filtra grupos após a agregação",
+    "<b>Ordenação:</b> ORDER BY campo ASC/DESC"
+   ],
+   "tip": "Se a consulta está duplicando registros, revise o JOIN. A maioria dos erros vem de junções mal definidas ou chaves erradas."
+  },
+  {
+   "title": "VIEWS, PROCEDURES<br/>&amp; TRIGGERS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "programacao",
+   "idea": "Encapsular regras e reutilizar consultas para automatizar operações no banco.",
+   "formulas": [
+    "<b>Subquery:</b> consulta dentro de outra consulta",
+    "<b>IN / EXISTS:</b> testes comuns com subconsultas",
+    "<b>VIEW:</b> consulta armazenada para simplificar acesso",
+    "<b>Procedure:</b> bloco SQL executável com parâmetros",
+    "<b>Function:</b> retorna valor e pode ser usada em expressões",
+    "<b>Trigger:</b> executa BEFORE/AFTER em INSERT/UPDATE/DELETE",
+    "<b>Cursor:</b> percorre resultados linha a linha, quando necessário",
+    "<b>Uso:</b> centralizar regras, auditoria e automações"
+   ],
+   "tip": "Prefira soluções declarativas em SQL antes de usar cursor. Procedures e triggers ajudam, mas excesso pode dificultar manutenção."
+  },
+  {
+   "title": "TRANSAÇÕES, ÍNDICES<br/>&amp; OTIMIZAÇÃO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "otimizacao",
+   "idea": "Garantir consistência dos dados e melhorar desempenho nas operações mais frequentes.",
+   "formulas": [
+    "<b>Transação:</b> unidade lógica de trabalho",
+    "<b>Comandos:</b> BEGIN, COMMIT, ROLLBACK",
+    "<b>ACID:</b> atomicidade, consistência, isolamento e durabilidade",
+    "<b>Índice:</b> acelera busca, mas tem custo em escrita",
+    "<b>Normalização:</b> 1FN, 2FN e 3FN reduzem redundância",
+    "<b>Plano de execução:</b> ajuda a entender gargalos",
+    "<b>Otimização:</b> indexar colunas filtradas e usadas em JOIN",
+    "<b>Boas práticas:</b> evitar SELECT *, revisar locks e volume"
+   ],
+   "tip": "Nem todo índice melhora tudo. Indexe consultas críticas e observe o impacto em INSERT/UPDATE/DELETE e no plano de execução."
+  }
+ ],
+ "Redes_de_Computadores": [
+  {
+   "title": "CAMADAS &amp;<br/>ENCAPSULAMENTO",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "camadas",
+   "idea": "Organizar a comunicação em camadas para separar funções, protocolos e responsabilidades.",
+   "formulas": [
+    "<b>OSI:</b> Física, Enlace, Rede, Transporte, Sessão, Apresentação e Aplicação",
+    "<b>TCP/IP:</b> Acesso, Internet, Transporte e Aplicação",
+    "<b>Encapsulamento:</b> dados → segmento → pacote → quadro → bits",
+    "<b>PDU:</b> unidade de dados de cada camada",
+    "<b>MAC:</b> endereço da interface na rede local",
+    "<b>IP:</b> endereço lógico usado no roteamento",
+    "<b>Porta:</b> identifica o processo/aplicação no host",
+    "<b>Protocolos:</b> regras de formato, ordem e tratamento de mensagens"
+   ],
+   "tip": "Quando surgir dúvida sobre “quem faz o quê”, pense por camada: Ethernet/MAC no enlace, IP na rede, TCP/UDP no transporte."
+  },
+  {
+   "title": "IP, SUB-REDES<br/>&amp; ROTEAMENTO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "ip",
+   "idea": "Endereçar hosts, dividir redes e escolher caminhos para entregar pacotes ao destino.",
+   "formulas": [
+    "<b>IPv4:</b> 32 bits; endereço = rede + host",
+    "<b>Prefixo:</b> /n indica quantos bits pertencem à rede",
+    "<b>Hosts úteis:</b> 2<super>h</super> − 2, em sub-rede IPv4 tradicional",
+    "<b>Máscara:</b> separa parte de rede e host",
+    "<b>Gateway:</b> saída para outras redes",
+    "<b>Roteador:</b> encaminha pacotes pela tabela de rotas",
+    "<b>Rota padrão:</b> 0.0.0.0/0 quando não há rota mais específica",
+    "<b>IPv6:</b> 128 bits; enorme espaço de endereçamento"
+   ],
+   "tip": "Para subnetting: descubra primeiro quantos bits serão de host. Depois calcule bloco, rede, broadcast e faixa de hosts."
+  },
+  {
+   "title": "TCP, UDP<br/>&amp; SERVIÇOS",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "transporte",
+   "idea": "Entender transporte fim a fim, confiabilidade e os principais serviços usados pelas aplicações.",
+   "formulas": [
+    "<b>TCP:</b> orientado à conexão, confiável e ordenado",
+    "<b>3-way handshake:</b> SYN → SYN/ACK → ACK",
+    "<b>UDP:</b> sem conexão, menor overhead, sem garantia de entrega",
+    "<b>Controle:</b> TCP usa ACK, retransmissão, janela e congestionamento",
+    "<b>DNS:</b> nome ↔ endereço IP",
+    "<b>DHCP:</b> entrega configuração IP automaticamente",
+    "<b>HTTP/HTTPS:</b> comunicação Web; HTTPS usa TLS",
+    "<b>Portas:</b> 53 DNS, 80 HTTP, 443 HTTPS, 22 SSH"
+   ],
+   "tip": "Escolha TCP quando ordem e entrega importam. UDP é comum quando baixa latência pesa mais que retransmitir cada perda."
+  },
+  {
+   "title": "ETHERNET, WI-FI<br/>&amp; SEGURANÇA",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "lan",
+   "idea": "Compreender redes locais, comutação, acesso ao meio e princípios básicos de segurança.",
+   "formulas": [
+    "<b>Ethernet:</b> quadros identificados por MAC de origem/destino",
+    "<b>Switch:</b> aprende MACs e encaminha quadros pela tabela",
+    "<b>ARP:</b> descobre MAC associado a um IPv4 na LAN",
+    "<b>VLAN:</b> separa domínios lógicos na mesma infraestrutura",
+    "<b>Wi-Fi:</b> usa rádio; sinal sofre interferência e atenuação",
+    "<b>NAT:</b> traduz endereços privados para comunicação externa",
+    "<b>Firewall:</b> permite/bloqueia tráfego conforme regras",
+    "<b>Segurança:</b> autenticação, criptografia e segmentação"
+   ],
+   "tip": "Switch trabalha principalmente com MAC dentro da LAN; roteador trabalha com IP entre redes. Essa distinção resolve muitas questões."
+  }
+ ],
+ "Resistencia_dos_Materiais": [
+  {
+   "title": "TENSÃO &amp;<br/>DEFORMAÇÃO",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "tensao",
+   "idea": "Relacionar forças internas ao alongamento, encurtamento e distorção do material.",
+   "formulas": [
+    "<b>Tensão normal:</b> σ = F/A",
+    "<b>Deformação normal:</b> ε = ΔL/L<sub>0</sub>",
+    "<b>Lei de Hooke:</b> σ = E·ε (regime elástico linear)",
+    "<b>Tensão de cisalhamento:</b> τ = V/A ou τ = F/A",
+    "<b>Deformação de cisalhamento:</b> γ ≈ tanφ",
+    "<b>Módulo de cisalhamento:</b> τ = G·γ",
+    "<b>Poisson:</b> ν = -ε<sub>transv</sub>/ε<sub>long</sub>",
+    "<b>Rigidez axial:</b> ΔL = F·L/(A·E)"
+   ],
+   "tip": "Sempre confira se a peça está em tração, compressão ou cisalhamento. Sinal e área correta fazem muita diferença."
+  },
+  {
+   "title": "ESFORÇOS INTERNOS<br/>&amp; DIAGRAMAS",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "diagramas",
+   "idea": "Usar equilíbrio para obter esforço normal, cortante e momento fletor ao longo da barra.",
+   "formulas": [
+    "<b>Equilíbrio:</b> ΣF<sub>x</sub>=0, ΣF<sub>y</sub>=0, ΣM=0",
+    "<b>Esforços internos:</b> N (normal), V (cortante), M (momento)",
+    "<b>Corte:</b> isole um trecho e aplique equilíbrio na seção",
+    "<b>Relação:</b> dV/dx = -q(x)",
+    "<b>Relação:</b> dM/dx = V(x)",
+    "<b>Carga distribuída:</b> q·L ↔ força resultante",
+    "<b>Salto no cortante:</b> carga concentrada",
+    "<b>Salto no momento:</b> momento concentrado"
+   ],
+   "tip": "Faça primeiro as reações de apoio. Depois avance da esquerda para a direita montando V e M sem trocar convenção no meio."
+  },
+  {
+   "title": "TORÇÃO, FLEXÃO<br/>&amp; DEFLEXÃO",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "flexao",
+   "idea": "Descrever como eixos torcem e vigas fletidas desenvolvem tensões e deslocamentos.",
+   "formulas": [
+    "<b>Torção:</b> τ = T·r/J",
+    "<b>Ângulo de torção:</b> φ = T·L/(J·G)",
+    "<b>Flexão normal:</b> σ = M·y/I",
+    "<b>Curvatura:</b> 1/ρ = M/(E·I)",
+    "<b>Flexão pura:</b> eixo neutro passa pelo centróide",
+    "<b>Deflexão:</b> E·I·v''(x) = M(x)",
+    "<b>Momento de inércia:</b> quanto maior I, menor curvatura",
+    "<b>Superposição:</b> deslocamentos podem ser somados no regime linear"
+   ],
+   "tip": "Em flexão, a tensão cresce com a distância ao eixo neutro. Fibras externas são as mais solicitadas."
+  },
+  {
+   "title": "FLAMBAGEM,<br/>CRITÉRIOS &amp; PROJETO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "flambagem",
+   "idea": "Avaliar estabilidade, resistência admissível e segurança de elementos estruturais.",
+   "formulas": [
+    "<b>Tensão admissível:</b> σ<sub>adm</sub> = σ<sub>lim</sub>/FS",
+    "<b>Fator de segurança:</b> FS = resistência / solicitação",
+    "<b>Euler:</b> P<sub>cr</sub> = π²EI/(K·L)²",
+    "<b>Esbeltez:</b> λ = K·L/r",
+    "<b>Raio de giração:</b> r = √(I/A)",
+    "<b>Flambagem:</b> falha por instabilidade em compressão",
+    "<b>Condição de apoio:</b> altera K e, portanto, P<sub>cr</sub>",
+    "<b>Projeto:</b> verificar tensão, deformação e estabilidade"
+   ],
+   "tip": "Peças esbeltas falham por flambagem antes de escoar. Em barras comprimidas, não analise só a tensão σ = F/A."
+  }
+ ],
+ "Sistemas_Operacionais_": [
+  {
+   "title": "PROCESSOS &amp;<br/>THREADS",
+   "color": "TEAL",
+   "tint": "TEAL_T",
+   "kind": "processos",
+   "idea": "Entender execução concorrente, estados e como processos e threads usam recursos do sistema.",
+   "formulas": [
+    "<b>Processo:</b> programa em execução com recursos próprios",
+    "<b>Estados:</b> novo, pronto, executando, espera e terminado",
+    "<b>PCB:</b> PID + registradores + estado + contador de programa",
+    "<b>Thread:</b> unidade de execução dentro de um processo",
+    "<b>Compartilhamento:</b> threads dividem código, dados e arquivos",
+    "<b>Pilha:</b> cada thread possui sua própria pilha",
+    "<b>Troca de contexto:</b> salva estado atual e restaura o próximo",
+    "<b>Processo × thread:</b> processo isola memória; thread é mais leve"
+   ],
+   "tip": "Processo tem espaço de endereçamento próprio; threads do mesmo processo compartilham memória e recursos."
+  },
+  {
+   "title": "ESCALONAMENTO &amp;<br/>SINCRONIZAÇÃO",
+   "color": "AMBER",
+   "tint": "AMBER_T",
+   "kind": "escalonamento",
+   "idea": "Distribuir CPU entre tarefas e proteger recursos compartilhados contra acessos incorretos.",
+   "formulas": [
+    "<b>Objetivo:</b> melhorar utilização da CPU e tempo de resposta",
+    "<b>FCFS:</b> primeiro a chegar, primeiro a ser atendido",
+    "<b>SJF:</b> menor trabalho primeiro",
+    "<b>Prioridade:</b> maior prioridade executa antes",
+    "<b>Round Robin:</b> cada processo recebe um quantum",
+    "<b>Preemptivo:</b> SO pode interromper a execução",
+    "<b>Seção crítica:</b> trecho que acessa recurso compartilhado",
+    "<b>Sincronização:</b> mutex e semáforos evitam race conditions",
+    "<b>Deadlock:</b> exclusão mútua + posse/espera + não preempção + ciclo"
+   ],
+   "tip": "Round Robin é clássico em time-sharing. Quantum muito pequeno aumenta o overhead de troca de contexto."
+  },
+  {
+   "title": "MEMÓRIA &amp;<br/>MEMÓRIA VIRTUAL",
+   "color": "BERRY",
+   "tint": "BERRY_T",
+   "kind": "memoria",
+   "idea": "Mapear endereços e usar paginação para ampliar a memória disponível ao processo.",
+   "formulas": [
+    "<b>Endereço lógico:</b> gerado pelo processo",
+    "<b>Endereço físico:</b> posição real na RAM",
+    "<b>Paginação:</b> memória lógica em páginas e física em quadros",
+    "<b>Tabela de páginas:</b> mapeia página lógica → quadro físico",
+    "<b>Fragmentação interna:</b> sobra dentro de um quadro",
+    "<b>Memória virtual:</b> usa disco para ampliar a memória aparente",
+    "<b>Page fault:</b> página necessária não está na RAM",
+    "<b>Substituição:</b> FIFO, LRU e Ótimo (conceitual)",
+    "<b>Thrashing:</b> excesso de page faults e pouca execução útil"
+   ],
+   "tip": "Muitos page faults seguidos podem indicar thrashing: o sistema passa mais tempo trocando páginas do que executando."
+  },
+  {
+   "title": "ARQUIVOS, E/S<br/>&amp; PROTEÇÃO",
+   "color": "GREEN",
+   "tint": "GREEN_T",
+   "kind": "arquivos",
+   "idea": "Organizar armazenamento, controlar dispositivos e proteger o acesso aos recursos do sistema.",
+   "formulas": [
+    "<b>Arquivo:</b> conjunto ordenado de bytes com nome e metadados",
+    "<b>Diretórios:</b> organizam arquivos de forma hierárquica",
+    "<b>Operações:</b> abrir, ler, escrever, fechar, criar e deletar",
+    "<b>E/S:</b> pode usar interrupção, polling ou DMA",
+    "<b>DMA:</b> transferência direta entre dispositivo e memória",
+    "<b>Proteção:</b> usuários, permissões e modos de acesso",
+    "<b>Modo usuário:</b> restrito; <b>modo kernel:</b> privilegiado",
+    "<b>Syscall:</b> interface controlada entre aplicação e kernel",
+    "<b>Kernel:</b> gerencia recursos com segurança e eficiência"
+   ],
+   "tip": "Syscall é a ponte controlada entre programas em modo usuário e os serviços privilegiados oferecidos pelo kernel."
+  }
+ ]
+}
