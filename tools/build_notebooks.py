@@ -135,7 +135,7 @@ def build_notebook(subj: dict) -> nbf.NotebookNode:
     # 1) titulo
     cells.append(nbf.v4.new_markdown_cell(
         f"# {emoji} {name}\n\n"
-        f"`{cat}` · **8º semestre · Engenharia da Computação** · `Python 3`\n\n"
+        f"`{cat}` · **Engenharia da Computação** · `Python 3`\n\n"
         f"> **{tagline}**\n\n"
         f"{about}\n"
     ))

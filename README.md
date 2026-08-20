@@ -1,6 +1,6 @@
 # 🎓 Engenharia da Computação — Cheat Sheets & Notebooks
 
-> **Portfólio de estudos · 8º semestre** — Resumos visuais (cheat sheets em PDF) + notebooks Jupyter executáveis, cobrindo as principais disciplinas do curso.
+> **Portfólio de estudos** — Resumos visuais (cheat sheets em PDF) + notebooks Jupyter executáveis, cobrindo as principais disciplinas do curso.
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebooks-F37626?logo=jupyter&logoColor=white)
@@ -11,7 +11,7 @@
 
 ## 🧭 O que é este repositório
 
-Este repositório reúne **23 disciplinas do 8º semestre de Engenharia da Computação** em um formato de estudo duplo:
+Este repositório reúne **23 disciplinas de Engenharia da Computação** em um formato de estudo duplo:
 
 | Formato | Descrição |
 |---|---|
@@ -217,5 +217,5 @@ Distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) para mais
 ---
 
 <p align="center">
-  Feito com 💙 durante o 8º semestre de <b>Engenharia da Computação</b>.
+  Feito com 💙 para <b>Engenharia da Computação</b>.
 </p>
